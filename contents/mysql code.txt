@@ -1,0 +1,143 @@
+create database smsdb;
+use smsdb;
+
+CREATE TABLE CONTACT (
+	`NAME` VARCHAR(20) DEFAULT NULL,
+	PHONE VARCHAR(20) NOT NULL,
+	`LAST` VARCHAR(80) DEFAULT NULL,
+	PRIMARY KEY(PHONE)
+);
+
+/*주소록 20개 입력*/
+insert into contact(`name`,phone) values("yunwon", "010-9102-3813");
+insert into contact(`name`,phone) values("이정준 교수님", "010-3306-2770");
+insert into contact(`name`,phone) values("오민재", "010-9390-1763");
+insert into contact(`name`,phone) values("예진언니", "010-4422-1010");
+insert into contact(`name`,phone) values("여동생", "010-2301-3819");
+insert into contact(`name`,phone) values("mom", "010-5319-3002");
+insert into contact(`name`,phone) values("아빠", "010-4744-2403");
+insert into contact(`name`,phone) values("뚜레쥬르", "02-2604-4545");
+insert into contact(`name`,phone) values("장보윤", "010-2732-0920");
+insert into contact(`name`,phone) values("최수인", "010-6357-2000");
+
+insert into contact(`name`,phone) values("양소영", "010-2233-2121");
+insert into contact(`name`,phone) values("방영철 교수님", "010-6062-2357");
+insert into contact(`name`,phone) values("이상현", "010-4573-2212");
+insert into contact(`name`,phone) values("지혜언니", "010-7676-5000");
+insert into contact(`name`,phone) values("외삼촌", "010-2017-0807");
+insert into contact(`name`,phone) values("산기대", "031-8071-3030");
+insert into contact(`name`,phone) values("컴퓨터공학부", "031-8071-1023");
+insert into contact(`name`,phone) values("파리바게트", "02-2646-4759");
+insert into contact(`name`,phone) values("생선가게", "032-909-2932");
+insert into contact(`name`,phone) values("남동생", "010-8877-9999");
+
+CREATE TABLE MESSAGE (
+	PHONE VARCHAR(20) default '000-0000-000' NOT NULL,
+	MSGNUM INT(10) default null,
+	`TYPE` VARCHAR(10),
+	CONTENT VARCHAR(80) NOT NULL,
+	`DATE` datetime default now(),
+	PRIMARY KEY(phone, CONTENT)
+);
+
+CREATE TABLE BOARD (
+	MSGNUM varchar(20),
+	BRDNUM datetime default now(),
+	CONTENT VARCHAR(80),
+	PRIMARY KEY(brdnum)
+);
+
+/*메시지 테이블에 번호 외래키 지정*/
+ALTER TABLE message
+ADD CONSTRAINT addnum
+FOREIGN KEY (PHONE)
+REFERENCES contact(PHONE);
+
+/*메시지 50개 이상 입력*/
+insert into message values("010-9102-3813",1, "s", "hello, world!", now());
+insert into message values("010-9102-3813",4, "r", "yes, hello, world!", now());
+insert into message values("010-9102-3813",3, "s", "yap, lst msg!", now());
+insert into message values("010-9102-3813",4, "r", "no, it's real", now());
+insert into message values("010-9102-3813",2, "s", "yes, you're right", now());
+insert into message values("010-9102-3813",1, "r", "really?", now());
+insert into message values("010-9102-3813",4, "s", "head", now());
+insert into message values("010-9102-3813",5, "r", "i don't know!", now());
+update contact c, message m set c.`last` = "i don't know!" where c.phone = "010-9102-3813";
+insert into message values("010-5319-3002",2, "r", "hello, yunwon!", now());
+insert into message values("010-5319-3002",2, "s", "hello, mom", now());
+insert into message values("010-5319-3002",2, "r", "whar r u doing?", now());
+insert into message values("010-5319-3002",2, "s", "i don'y knowwww", now());
+insert into message values("010-5319-3002",2, "r", "let's go outside", now());
+insert into message values("010-5319-3002",2, "s", "i like in my home", now());
+update contact c, message m set c.`last` = "i like in my home" where c.phone = "010-5319-3002";
+insert into message values("010-2732-0920",5, "s", "hey boyun", now());
+insert into message values("010-2732-0920",5, "r", "hey yunwon", now());
+insert into message values("010-2732-0920",5, "s", "how about usa", now());
+insert into message values("010-2732-0920",5, "r", "here ? too cold , ,", now());
+insert into message values("010-2732-0920",5, "s", "come back to korea", now());
+update contact c, message m set c.`last` = "come back to korea" where c.phone = "010-2732-0920";
+insert into message values("010-8877-9999",5, "r", "집에 언제와", now());
+insert into message values("010-8877-9999",5, "s", "과제가 안끝나", now());
+insert into message values("010-8877-9999",5, "r", "주말에 못오는거야?", now());
+insert into message values("010-8877-9999",5, "s", "아마 그럴거 같아", now());
+insert into message values("010-8877-9999",5, "r", "얼른 종강이면 좋겠네", now());
+insert into message values("010-8877-9999",5, "s", "같은 마음이야", now());
+update contact c, message m set c.`last` = "같은 마음이야" where c.phone = "010-8877-9999";
+insert into message values("010-6062-2357",2, "r", "채윤원 졸작은 잘하고 있나", now());
+insert into message values("010-6062-2357",2, "s", "노력 중에 있습니다", now());
+insert into message values("010-6062-2357",2, "r", "주제는 무엇인가", now());
+insert into message values("010-6062-2357",2, "s", "아직 미정입니다", now());
+insert into message values("010-6062-2357",2, "r", "알고리즘 시험은 다음주야", now());
+insert into message values("010-6062-2357",2, "s", "네 명심하겠습니다..", now());
+update contact c, message m set c.`last` = "네 명심하겠습니다.." where c.phone = "010-6062-2357";
+insert into message values("031-8071-3030",2, "r", "[WEB]생활관생 모집 중 공지 확인 바랍니다.", now());
+insert into message values("031-8071-3030",2, "r", "[WEB]겨울방학 재수강자, 대 모 집 ★", now());
+insert into message values("031-8071-3030",2, "r", "[WEB]공지 확인 부탁드립니다.", now());
+insert into message values("031-8071-3030",2, "r", "[WEB]2학기 현장실습생들은 E동 222호로 모이세요", now());
+insert into message values("031-8071-3030",2, "r", "[WEB]잘못 전송되었습니다.", now());
+insert into message values("031-8071-3030",2, "r", "[WEB]2020년도 신입생 모집, 학사공지 확인 요함", now());
+update contact c, message m set c.`last` = "[WEB]2020년도 신입생 모집, 학사공지 확인 요함" where c.phone = "031-8071-3030";
+insert into message values("010-2301-3819",2, "r", "언니 어디야", now());
+insert into message values("010-2301-3819",2, "r", "언니 어디야아", now());
+insert into message values("010-2301-3819",2, "r", "엇 잘못 보냈다", now());
+insert into message values("010-2301-3819",2, "s", "나야 당연히 학교지", now());
+insert into message values("010-2301-3819",2, "r", "오늘 밤에 곱창 먹자", now());
+insert into message values("010-2301-3819",2, "s", "너무 너무 좋아", now());
+insert into message values("010-2301-3819",2, "s", "몇시에 먹을까", now());
+insert into message values("010-2301-3819",2, "r", "9시쯔음에 먹자 ㅎㅎ", now());
+update contact c, message m set c.`last` = "9시쯔음에 먹자 ㅎㅎ" where c.phone = "010-2301-3819";
+insert into message values("010-3306-2770",2, "r", "오늘까지 과제 마감입니다.", now());
+insert into message values("010-3306-2770",2, "s", "기간을 늘려주세요", now());
+insert into message values("010-3306-2770",2, "r", "충분히 많이 드렸습니다.", now());
+insert into message values("010-3306-2770",2, "s", "네, 제출하도록 노력하겠습니다", now());
+insert into message values("010-3306-2770",2, "r", "발표는 정확하지 않습니다.", now());
+insert into message values("010-3306-2770",2, "s", "힘내겠습니다.", now());
+insert into message values("010-3306-2770",2, "r", "기말고사는 추후 공지하겠습니다.", now());
+update contact c, message m set c.`last` = "기말고사는 추후 공지하겠습니다." where c.phone = "010-3306-2770";
+insert into message values("02-2646-4759",2, "r", "기숙사 내에 오픈했습니다", now());
+insert into message values("02-2646-4759",2, "s", "할인 하나요?", now());
+insert into message values("02-2646-4759",2, "r", "네, 일주일간 오픈 세일 있습니다.", now());
+insert into message values("02-2646-4759",2, "s", "얼마나 하는지 알 수 있나요", now());
+insert into message values("02-2646-4759",2, "r", "전품목 20% 입니다.", now());
+update contact c, message m set c.`last` = "전품목 20% 입니다." where c.phone = "02-2646-4759";
+insert into message values("010-6357-2000",2, "r", "언니 어디에오", now());
+insert into message values("010-6357-2000",2, "s", "지금 컴네 수업 중", now());
+insert into message values("010-6357-2000",2, "r", "점심 어디서 묵을까요", now());
+insert into message values("010-6357-2000",2, "s", "음 E동 어때", now());
+insert into message values("010-6357-2000",2, "r", "오늘 햄버거 가죠", now());
+insert into message values("010-6357-2000",2, "s", "ㅋㅋㅋㅋㅋ좋아", now());
+insert into message values("010-6357-2000",2, "r", "1층에서 봐용", now());
+update contact c, message m set c.`last` = "1층에서 봐용" where c.phone = "010-6357-2000";
+
+/*contact 테이블 마지막 메시지 연동*/
+CREATE INDEX idx_parent_id ON MESSAGE(CONTENT);
+ALTER TABLE CONTACT
+ADD CONSTRAINT addlast
+FOREIGN KEY (`LAST`)
+REFERENCES MESSAGE(CONTENT) ON UPDATE CASCADE ON DELETE SET NULL;
+
+/*board 테이블에서 message 테이블 참조하는 외래키 2개 생성 */
+ALTER TABLE BOARD
+ADD CONSTRAINT addbrd
+FOREIGN KEY (MSGNUM, CONTENT)
+REFERENCES MESSAGE(PHONE, CONTENT) ON DELETE CASCADE;

@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'newtype';
+	src: url('resources/Newtype.otf') format('opentpye');
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Handon3gyeopsal600g';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BBTreeGL';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGL.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+::-webkit-scrollbar{
+	display:none;
+}
+
+body {
+	background-color: #fff;
+	background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px,
+		transparent 81px), linear-gradient(#eee .1em, transparent .1em);
+	background-size: 100% 1.2em;
+}
+
+header {
+	font-family: newtype;
+	text-align : left;
+	color: skyblue;
+	font-size: 30px;
+	font-weight: bold;
+	margin-left: 35px;
+	margin-top: 13px;
+}
+hr.gray{
+	border: 1.5px solid;
+	color: lightgray;
+	width: 97%;
+	align:center;
+}
+#left{
+	display:table;
+	text-align:center;
+	width:30%;
+	height:600px;
+	float:left;
+}
+#right{
+	display:table;
+	text-align:center;
+	width:70%;
+	height:600px;
+	float:right;
+}
+#out{
+	display:table;
+	text-align:center;
+	width:100%;
+	height:780px;
+}
+#in{
+	display: table-cell;
+	vertical-align:middle;
+	margin:0 auto;
+}
+#contact{
+	font-family:Handon3gyeopsal600g;
+	position:fixed;
+	top:160px;
+	left:30px;
+	bottom:90px;
+	width:400px;
+	overflow-y:auto;
+	-ms-overflow-style:none;
+}
+#contact2{
+	font-family:Handon3gyeopsal600g;
+}
+#contact3{
+	font-family:Handon3gyeopsal600g;
+	position:fixed;
+	top:120px;
+	left:30px;
+	bottom:70px;
+	width:420px;
+	overflow-y:auto;
+}
+#contact4{
+	font-family:Handon3gyeopsal600g;
+	position:fixed;
+	top:160px;
+	left:600px;
+	bottom:150px;
+	width:1200px;
+	overflow-y:auto;
+}
+.verticalLine{
+	border-right:3.2px solid lightgray;
+}
+textarea{
+	margin-top:30px;
+	width:1100px;
+	height:540px;
+	resize:none;
+}
+#cont{
+	margin-right:auto;
+	margin-left:auto;
+	width:30%;
+}
+#cont2{
+	margin-right:auto;
+	margin-left:auto;
+	width:70%;
+}
