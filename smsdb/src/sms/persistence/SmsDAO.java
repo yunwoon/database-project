@@ -20,7 +20,7 @@ public class SmsDAO {
 	void connect() {
 		try {
 			Class.forName(jdbc_driver);
-			conn = DriverManager.getConnection(jdbc_url, "jspbook", "passwd");
+			conn = DriverManager.getConnection(jdbc_url, "mysql_id", "mysql_pwd");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
